@@ -1,6 +1,5 @@
 variable "service_account_id" {
   type    = string
-#   default = "service-account-id"
 }
 
 variable "service_account_display_name" {
