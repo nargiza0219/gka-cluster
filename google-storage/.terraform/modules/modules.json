@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"my-google-storage","Source":"git::https://github.com/nargiza0219/tf-modules.git//google-storage","Dir":".terraform/modules/my-google-storage/google-storage"}]}
