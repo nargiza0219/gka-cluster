@@ -8,7 +8,7 @@ on:
 env:
   # GCP credentials and Terraform state bucket
   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
+  
   GOOGLE_PROJECT: iron-country-417723
   GOOGLE_REGION: us-central1-c
 
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./gke
+        working-directory: ./Gka
 
     steps:
       - name: Checkout source code
@@ -32,10 +32,8 @@ jobs:
           export_default_credentials: true
 
       - name: Terraform init
-        id: init
-        run: |
-          terraform init \
-          -backend-config="bucket=$BUCKET_TF_STATE"
+        working-directory: ../google-storage
+        run: terraform init
 
       - name: Format Terraform files
         run: terraform fmt -check
@@ -54,3 +52,4 @@ jobs:
         if: success()
         run: terraform apply -auto-approve
 #366999 222hhhhhhjjjklvmldsslekkr
+
