@@ -53,3 +53,4 @@ jobs:
       - name: Apply Terraform changes
         if: success()
         run: terraform apply -auto-approve
+#3
