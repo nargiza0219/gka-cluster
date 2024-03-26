@@ -1,4 +1,5 @@
-name: "Apply Terraform code changes"
+name: Apply Terraform code changes
+
 on:
   push:
     branches:
@@ -13,7 +14,7 @@ env:
 
 jobs:
   terraform:
-    name: "Apply Terraform code changes"
+    name: Apply Terraform code changes
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,7 +33,9 @@ jobs:
 
       - name: Terraform init
         id: init
-        run: terraform init -backend-config="bucket=$BUCKET_TF_STATE"
+        run: |
+          terraform init \
+          -backend-config="bucket=$BUCKET_TF_STATE"
 
       - name: Format Terraform files
         run: terraform fmt -check
@@ -40,11 +43,13 @@ jobs:
 
       - name: Terraform plan
         id: plan
-        run: terraform plan -no-color -input=false -out planfile
+        run: |
+          terraform plan \
+          -no-color \
+          -input=false \
+          -out=planfile
         continue-on-error: true
 
       - name: Apply Terraform changes
         if: success()
         run: terraform apply -auto-approve
-
-####333
