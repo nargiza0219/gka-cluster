@@ -37,8 +37,10 @@ jobs:
         run: terraform fmt -check
         continue-on-error: false
 
-      - name: Create Terraform execution plan
+      - name: Terraform plan
+        id: plan
         run: terraform plan -no-color -input=false -out planfile
+        continue-on-error: true
 
       - name: Apply Terraform changes
         if: success()
