@@ -9,7 +9,7 @@ env:
   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
   GOOGLE_PROJECT: iron-country-417723
-  GOOGLE_REGION: us-central1-c"
+  GOOGLE_REGION: us-central1-c
 
 jobs:
   terraform:
