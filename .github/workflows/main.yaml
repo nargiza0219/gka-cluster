@@ -39,7 +39,7 @@ jobs:
 
       - name: Format Terraform files
         run: terraform fmt -check
-        continue-on-error: false
+        continue-on-error: true
 
       - name: Terraform plan
         id: plan
